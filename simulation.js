@@ -4,9 +4,10 @@ var height = 500;
 var light_speed = 100;
 var timestep = .005;
 
-
-
-var canvas = document.getElementById('canvas');
+var canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+canvas.width = 500;
+canvas.height = 500;
 var context = canvas.getContext('2d');
 var image_data = context.createImageData(width, height);
 var data = image_data.data;
@@ -30,14 +31,14 @@ var loop = function () {
     render();
 
     // Oscillator example
-    /*
+    
     var amplitude = 100000 * (1-Math.exp(-time));
     var frequency = 20;
     current_y[width/2][height/2-1] = amplitude * Math.sin(time * frequency);
     current_y[width/2][height/2] = amplitude * Math.sin(time * frequency);
-    */
-
+    
     // Magnetic field induced by current loop
+    /*
     var current = 100 * (1-Math.exp(-time));
     var left = 100;
     var top = 100;
@@ -51,6 +52,7 @@ var loop = function () {
         current_y[left][j] = -current;
         current_y[right][j] = current;
     }
+    */
     time += timestep;
     console.log(electric_x[100][100]);
 };

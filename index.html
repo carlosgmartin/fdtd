@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
     <body>
-        <canvas id="canvas" width="500" height="500"></canvas>
-        <script src="fdtdlib.js"></script>
-        <script src="simulation.js"></script>
+
+		<script type="application/javascript">
+		function load(script) {
+		    var element = document.createElement("script");
+		    element.type = "application/javascript";
+		    element.src = script;
+		    document.body.appendChild(element);
+		}
+		</script>
+
+		<button onclick="load('fdtdlib.js');load('simulation.js');">Main simulation</button>
+		<button onclick="load('scenarios/charge_static.js');">Static charge</button>
+		<button onclick="load('scenarios/charge_transport.js');">Charge transport</button>
+		<button onclick="load('scenarios/wire_current.js');">Wire of current</button>
+		<button onclick="load('scenarios/conductor.js');">Shielding conductor</button>
+		<button onclick="load('scenarios/solenoid.js');">Solenoid</button>
+		<button onclick="load('scenarios/toroidal_dipole_1.js');">Toroidal dipole 1</button>
+		<button onclick="load('scenarios/toroidal_dipole_2.js');">Toroidal dipole 2</button>
+		<br>
     </body>
 </html>
