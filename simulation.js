@@ -12,14 +12,14 @@ var context = canvas.getContext('2d');
 var image_data = context.createImageData(width, height);
 var data = image_data.data;
 var render = function () {
-    for (var i = 0; i < width; ++i) {
-        for (var j = 0; j < height; ++j) {
-            var index = (i + j * width) * 4;
+    var index = 0;
+    for (var j = 0; j < height; ++j) {
+        for (var i = 0; i < width; ++i) {
             var value = Math.floor(1/(1+Math.exp(-magnetic_z[i][j])) * 255);
-            data[index] = value;
-            data[++index] = value;
-            data[++index] = value;
-            data[++index] = 255;
+            data[index++] = value;
+            data[index++] = value;
+            data[index++] = value;
+            data[index++] = 255;
         }
     }
     context.putImageData(image_data, 0, 0);
@@ -38,7 +38,6 @@ var loop = function () {
     current_y[width/2][height/2] = amplitude * Math.sin(time * frequency);
     
     // Magnetic field induced by current loop
-    /*
     var current = 100 * (1-Math.exp(-time));
     var left = 100;
     var top = 100;
@@ -52,7 +51,6 @@ var loop = function () {
         current_y[left][j] = -current;
         current_y[right][j] = current;
     }
-    */
     time += timestep;
     console.log(electric_x[100][100]);
 };
